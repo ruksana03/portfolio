@@ -1,5 +1,11 @@
 import { Inter } from 'next/font/google'
 import './globals.css'
+import Navbar from '@/components/navbar/Navbar'
+import Banner from '@/components/banner/Banner'
+import Footer from '@/components/footer/Footer'
+import MySkilles from '@/components/mySkills/MySkilles'
+import Study from '@/components/myStudy/Study'
+import About from '@/components/about/About'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -11,7 +17,35 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+
+      <body className={inter.className}>
+        <div className=''>
+          <div className='fixed z-10 w-full'>
+            <Navbar />
+          </div>
+          <Banner />
+
+          <div className='text-2xl w-1/2 mx-auto'>
+        <MySkilles />
+
+        <div className='flex gap-2 justify-between'>
+          <div>
+            <Study />
+          </div>
+          <div>
+            <About />
+          </div>
+        </div>
+      </div>
+
+          <div className='min-h-[calc(100vh-380px)]'>
+            {children}
+          </div>
+          <div>
+            <Footer />
+          </div>
+        </div>
+      </body>
     </html>
   )
 }
